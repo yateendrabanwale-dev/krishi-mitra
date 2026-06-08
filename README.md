@@ -31,7 +31,3 @@ Deploy `target/krishi-mitra.war` to Tomcat 10.1.
 
 Live crop recommendation and live weather report require internet access on the Tomcat server.
 
-Default sample user:
-
-- Email: `farmer@example.com`
-- Password: `password123`

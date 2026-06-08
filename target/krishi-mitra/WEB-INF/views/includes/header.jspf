@@ -1,0 +1,48 @@
+<%@ page import="com.farmerassistant.model.User" %>
+<%
+  User currentUser = (User) session.getAttribute("user");
+  String currentPath = request.getServletPath();
+%>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= request.getAttribute("pageTitle") %> | Krishi Mitra</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">FA</div>
+      <div>
+        <strong>Krishi Mitra</strong>
+        <small>A one stop solution for farmers</small>
+      </div>
+    </div>
+    <nav class="nav">
+      <a class="<%= "/dashboard".equals(currentPath) ? "active" : "" %>" href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
+      <a class="<%= "/crop-recommendation".equals(currentPath) ? "active" : "" %>" href="${pageContext.request.contextPath}/crop-recommendation">Live Crop Recommendation</a>
+      <a class="<%= "/weather".equals(currentPath) ? "active" : "" %>" href="${pageContext.request.contextPath}/weather">Live Weather Report</a>
+      <a class="<%= "/market-price".equals(currentPath) ? "active" : "" %>" href="${pageContext.request.contextPath}/market-price">Live Market Prices</a>
+      <a class="<%= "/government-schemes".equals(currentPath) ? "active" : "" %>" href="${pageContext.request.contextPath}/government-schemes">Government Scheme</a>
+      <a class="<%= "/queries".equals(currentPath) ? "active" : "" %>" href="${pageContext.request.contextPath}/queries">Query System</a>
+      <a class="<%= "/faq".equals(currentPath) ? "active" : "" %>" href="${pageContext.request.contextPath}/faq">FAQ</a>
+      <% if (currentUser != null && currentUser.isAdmin()) { %>
+      <a class="<%= "/admin-dashboard".equals(currentPath) ? "active" : "" %>" href="${pageContext.request.contextPath}/admin-dashboard">Admin Dashboard</a>
+      <a class="<%= "/admin-queries".equals(currentPath) ? "active" : "" %>" href="${pageContext.request.contextPath}/admin-queries">Manage Queries</a>
+      <% } %>
+      <a href="${pageContext.request.contextPath}/logout">Logout</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1><%= request.getAttribute("pageTitle") %></h1>
+        <p class="muted">Welcome, <%= currentUser == null ? "Farmer" : currentUser.getFullName() %></p>
+      </div>
+    </header>
+    <% if (request.getAttribute("error") != null) { %>
+      <div class="message error"><%= request.getAttribute("error") %></div>
+    <% } %>

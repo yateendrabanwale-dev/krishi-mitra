@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Farmer Assistant System</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">FA</div>
+          <div>
+            <strong>Farmer Assist</strong>
+            <span>Field decision system</span>
+          </div>
+        </div>
+        <nav>
+          <a class="active" href="#overview">Overview</a>
+          <a href="#live-prices">Live Prices</a>
+          <a href="#mandi-locator">Mandi Locator</a>
+          <a href="#query-system">Query System</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Today</p>
+            <h1>Farmer Assistant System</h1>
+          </div>
+          <div class="weather-chip" aria-label="Weather summary">
+            <span class="weather-icon" aria-hidden="true"></span>
+            <div>
+              <strong>31 C</strong>
+              <span>Light wind, irrigation check due</span>
+            </div>
+          </div>
+        </header>
+
+        <section id="overview" class="hero-grid">
+          <div class="farm-visual" aria-label="Illustration of farmland">
+            <div class="sun"></div>
+            <div class="hills"></div>
+            <div class="field-lines"></div>
+            <div class="tractor"></div>
+          </div>
+          <div class="insight-panel">
+            <p class="eyebrow">Recommended action</p>
+            <h2>Water tomato field before 10 AM</h2>
+            <p>Soil moisture is below the target range and wind is expected to rise later. Apply light irrigation and inspect for leaf curl while walking the rows.</p>
+            <div class="quick-actions">
+              <button type="button" data-action="Log irrigation">Log irrigation</button>
+              <button type="button" class="secondary" data-action="Create pest check">Create pest check</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="metrics" aria-label="Farm metrics">
+          <article>
+            <span>Soil moisture</span>
+            <strong>38%</strong>
+            <small>Needs water</small>
+          </article>
+          <article>
+            <span>Crop health</span>
+            <strong>Good</strong>
+            <small>2 alerts</small>
+          </article>
+          <article>
+            <span>Expected yield</span>
+            <strong>4.8 t</strong>
+            <small>This season</small>
+          </article>
+          <article>
+            <span>Input spend</span>
+            <strong>Rs. 18,400</strong>
+            <small>Month to date</small>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel" id="planner">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Crop planner</p>
+                <h2>Plan a field</h2>
+              </div>
+              <button type="button" id="resetPlanner" aria-label="Reset planner">Reset</button>
+            </div>
+            <form class="planner-form" id="plannerForm">
+              <label>
+                Crop
+                <select id="crop">
+                  <option>Tomato</option>
+                  <option>Rice</option>
+                  <option>Wheat</option>
+                  <option>Maize</option>
+                  <option>Cotton</option>
+                </select>
+              </label>
+              <label>
+                Land size
+                <input id="area" type="number" min="0.1" step="0.1" value="2">
+              </label>
+              <label>
+                Soil type
+                <select id="soil">
+                  <option>Loamy</option>
+                  <option>Clay</option>
+                  <option>Sandy</option>
+                  <option>Black soil</option>
+                </select>
+              </label>
+              <button type="submit">Generate advice</button>
+            </form>
+            <div class="advice-box" id="adviceBox">
+              Select your field details to get seed, fertilizer, and irrigation guidance.
+            </div>
+          </div>
+
+          <div class="panel" id="tasks">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Work list</p>
+                <h2>Field tasks</h2>
+              </div>
+              <button type="button" id="addTask">Add task</button>
+            </div>
+            <ul class="task-list" id="taskList"></ul>
+          </div>
+
+          <div class="panel" id="market">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Market watch</p>
+                <h2>Crop prices</h2>
+              </div>
+              <span class="status-dot">Updated sample data</span>
+            </div>
+            <div class="price-list" id="priceList"></div>
+          </div>
+
+          <div class="panel" id="pest">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Pest guide</p>
+                <h2>Symptom checker</h2>
+              </div>
+            </div>
+            <label class="wide-label">
+              Choose symptom
+              <select id="symptom">
+                <option value="curl">Leaves curling</option>
+                <option value="spots">Brown leaf spots</option>
+                <option value="yellow">Yellowing leaves</option>
+                <option value="holes">Holes in leaves</option>
+              </select>
+            </label>
+            <div class="diagnosis" id="diagnosis"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

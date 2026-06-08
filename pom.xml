@@ -6,7 +6,7 @@
   <groupId>com.farmerassistant</groupId>
   <artifactId>krishi-mitra</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>Krishi Mitra - A One Stop Solution for Farmers</name>
 

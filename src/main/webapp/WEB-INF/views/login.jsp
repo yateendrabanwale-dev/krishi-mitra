@@ -22,10 +22,10 @@
 
     <form class="form-stack" method="post" action="${pageContext.request.contextPath}/login">
       <label>Email
-        <input type="email" name="email" value="farmer@example.com" required>
+        <input type="email" name="email" required autocomplete="off">
       </label>
       <label>Password
-        <input type="password" name="password" value="password123" required>
+        <input type="password" name="password" required autocomplete="new-password">
       </label>
       <button class="btn" type="submit">Login</button>
     </form>
